@@ -4,7 +4,7 @@ import { EntityValidationError } from '@/shared/domain/errors/validation-error'
 
 describe('UserEntity integration tests', () => {
   describe('constructor method', () => {
-    it('should throw an error when creating a user with invalid name', () => {
+    it('Should throw an error when creating a user with invalid name', () => {
       let props: UserProps = {
         ...UserDataBuilder({}),
         name: null as any,
@@ -34,7 +34,7 @@ describe('UserEntity integration tests', () => {
       expect(() => new UserEntity(props)).toThrow(EntityValidationError)
     })
 
-    it('should throw an error when creating a user with invalid email', () => {
+    it('Should throw an error when creating a user with invalid email', () => {
       let props: UserProps = {
         ...UserDataBuilder({}),
         email: null as any,
@@ -64,7 +64,7 @@ describe('UserEntity integration tests', () => {
       expect(() => new UserEntity(props)).toThrow(EntityValidationError)
     })
 
-    it('should throw an error when creating a user with invalid password', () => {
+    it('Should throw an error when creating a user with invalid password', () => {
       let props: UserProps = {
         ...UserDataBuilder({}),
         password: null as any,
@@ -94,7 +94,7 @@ describe('UserEntity integration tests', () => {
       expect(() => new UserEntity(props)).toThrow(EntityValidationError)
     })
 
-    it('should throw an error when creating a user with invalid createdAt', () => {
+    it('Should throw an error when creating a user with invalid createdAt', () => {
       let props: UserProps = {
         ...UserDataBuilder({}),
         createdAt: 10 as any,
@@ -108,6 +108,13 @@ describe('UserEntity integration tests', () => {
       }
 
       expect(() => new UserEntity(props)).toThrow(EntityValidationError)
+    })
+    it('Should a valid user', () => {
+      expect.assertions(0)
+      const props: UserProps = {
+        ...UserDataBuilder({}),
+      }
+      new UserEntity(props)
     })
   })
 })
