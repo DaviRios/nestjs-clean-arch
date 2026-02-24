@@ -9,8 +9,9 @@ export abstract class ClassValidatorFields<
 > implements ValidatorFieldsInterface<PropsValidated> {
   errors: FieldsError = {}
   validatedData: PropsValidated = {} as PropsValidated
-  validate(data: any): boolean {
-    const errors = validateSync(data)
+
+  validate(data: PropsValidated): boolean {
+    const errors = validateSync(data as object)
     if (errors.length) {
       this.errors = {}
       for (const error of errors) {
